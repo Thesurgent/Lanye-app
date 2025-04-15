@@ -83,6 +83,7 @@ footer {
     width: 250px;
     padding: 20px;
     transition: transform 0.2s ease;
+    position: relative;
 }
 
 .model-card:hover {
@@ -137,4 +138,10 @@ footer {
 
 .model-card button:hover {
     background: #e05245;
+}
+
+/* ⭐ Extra (optional) highlight class for featured model */
+.model-card.featured {
+    border: 2px solid #ff6f61;
+    box-shadow: 0 8px 20px rgba(255, 111, 97, 0.3);
 }
