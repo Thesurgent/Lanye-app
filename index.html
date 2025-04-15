@@ -87,6 +87,12 @@
         <p>&copy; 2025 Lanye App</p>
     </footer>
 
+    <!-- Floating Search Button -->
+    <div class="search-button">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <button onclick="performSearch()">🔍</button>
+    </div>
+
     <script>
         function filterModels() {
             var cityFilter = document.getElementById('cityFilter').value;
@@ -94,6 +100,20 @@
             
             models.forEach(function(model) {
                 if (cityFilter === 'all' || model.getAttribute('data-city') === cityFilter) {
+                    model.style.display = 'block';
+                } else {
+                    model.style.display = 'none';
+                }
+            });
+        }
+
+        function performSearch() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const models = document.querySelectorAll('.model-card');
+
+            models.forEach(model => {
+                const name = model.querySelector('h3').textContent.toLowerCase();
+                if (name.includes(input)) {
                     model.style.display = 'block';
                 } else {
                     model.style.display = 'none';
