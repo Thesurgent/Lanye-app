@@ -16,10 +16,24 @@
         </div>
     </header>
 
+    <!-- City Filter Dropdown -->
+    <div class="filter-container">
+        <label for="cityFilter">Filter by City:</label>
+        <select id="cityFilter" onchange="filterModels()">
+            <option value="all">All Cities</option>
+            <option value="Nairobi">Nairobi</option>
+            <option value="Mombasa">Mombasa</option>
+            <option value="Kisumu">Kisumu</option>
+            <option value="Nakuru">Nakuru</option>
+            <option value="Eldoret">Eldoret</option>
+            <!-- Add more cities as needed -->
+        </select>
+    </div>
+
     <section class="models-section">
         <h2>Models to Expect</h2>
         <div class="models-grid">
-            <div class="model-card">
+            <div class="model-card" data-city="Nairobi">
                 <img src="/model1.jpg" alt="Model 1">
                 <h3>Sasha</h3>
                 <p>Nairobi • Verified</p>
@@ -27,7 +41,7 @@
                 <button>View Profile</button>
             </div>
 
-            <div class="model-card">
+            <div class="model-card" data-city="Mombasa">
                 <img src="/model2.jpg" alt="Model 2">
                 <h3>Lola</h3>
                 <p>Mombasa • New</p>
@@ -35,7 +49,7 @@
                 <button>View Profile</button>
             </div>
 
-            <div class="model-card">
+            <div class="model-card" data-city="Kisumu">
                 <img src="/model3.jpg" alt="Model 3">
                 <h3>Zari</h3>
                 <p>Kisumu • Verified</p>
@@ -65,5 +79,20 @@
     <footer>
         <p>&copy; 2025 Lanye App</p>
     </footer>
+
+    <script>
+        function filterModels() {
+            var cityFilter = document.getElementById('cityFilter').value;
+            var models = document.querySelectorAll('.model-card');
+            
+            models.forEach(function(model) {
+                if (cityFilter === 'all' || model.getAttribute('data-city') === cityFilter) {
+                    model.style.display = 'block';
+                } else {
+                    model.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
